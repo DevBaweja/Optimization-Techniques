@@ -13,11 +13,10 @@
 
 function simplex(f,A,b)
 [m,n] = size(A);
-[~,ncheck] = size(f);
-[mcheck,~] = size(b);
+total = m+n;
 format compact
 % checking for dimension
-    if checkDimension(m,n,mcheck,ncheck)
+    if checkDimension(f,A,b)
         [cj,cb,xb,x,deltaj,minratio,basic] = initialValue(f,A,b);
         while true
         % Table
@@ -39,16 +38,16 @@ format compact
                end
             else
                 % reached at optimal solution
-                [X,nonbasic] = optimalSolution(basic,xb,m+n);
+                [X,nonbasic] = optimalSolution(basic,xb,total);
                 
                 % For Unbounded Region
-                checkUnboundedRegion(x,m+n);
+                checkUnboundedRegion(x,total);
                 
                 fprintf("X : ");
                 disp(X);
                 
                 % For infinite solution
-                checkInfiniteSolution(nonbasic,deltaj,x,xb,cb,cj,basic,minratio,X,m+n);
+                checkInfiniteSolution(nonbasic,deltaj,x,xb,cb,cj,basic,minratio,X,total);
                 
                 fprintf("z : %d \n",sum(cb.*xb));
                 return;

@@ -1,8 +1,7 @@
 %% Check Dimension
-function boolean = checkDimension(m,n,mcheck,ncheck)
-if n==ncheck && m==mcheck
-    boolean = true;
-else
-    boolean = false;
-end
+function boolean = checkDimension(f,A,b)
+[m,n] = size(A);
+[~,ncheck] = size(f);
+[mcheck,~] = size(b);
+boolean =  (n==ncheck && m==mcheck);
 end
