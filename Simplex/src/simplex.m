@@ -27,13 +27,14 @@ format compact
                  % Optimal Solution is not obtained
                 [incoming,xi] = getIncoming(deltaj,x);
                 minratio = getMinratio(minratio,xb,xi);
+                fprintf("Minratio \n");
+                disp(minratio);
                if isnan(minratio) 
                    fprintf("Unbounded Solution & Unbounded Region \n");
                    return;
                else
-                    % getting outgoing vector
-                    % Degeneracy
-                   outgoing = getOutgoing(minratio,basic);
+                   % getting outgoing vector
+                   outgoing = getOutgoing(minratio,basic,x,incoming,total);
                    [x,xb,cb,basic] = nextTable(incoming,outgoing,x,xb,cb,cj,basic);
                end
             else

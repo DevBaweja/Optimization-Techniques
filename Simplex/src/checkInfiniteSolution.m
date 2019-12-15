@@ -10,7 +10,7 @@ if nonbasic(j) && deltaj(j) == 0
        if isnan(minratio)
            checkInfiniteCase(X,basic,xi,size);
        else
-           outgoing = getOutgoing(minratio,basic);
+           outgoing = getOutgoing(minratio,basic,x,incoming,size);
            [x,xb,cb,basic] = nextTable(incoming,outgoing,x,xb,cb,cj,basic);
            formTable(x,cb,xb,basic);
            Xnew = optimalSolution(basic,xb,size);

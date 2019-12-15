@@ -7,6 +7,4 @@ for i = 1:length(minratio)
       minratio(i) = NaN;  
    end
 end
-fprintf("Minratio \n");
-disp(minratio);
 end
