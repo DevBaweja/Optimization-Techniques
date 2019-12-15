@@ -1,7 +1,7 @@
 function [X,nonbasic] = optimalSolution(basic,xb,size)
 fprintf("Optimal Solution is achieved \n");
 fprintf("Basic Variables \n");
-disp("x"+basic);
+disp("x"+sort(basic)');
 % Finding solution
 X = zeros(1,size);
 nonbasic = true(1,size);

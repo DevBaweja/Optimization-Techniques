@@ -39,16 +39,12 @@ format compact
             else
                 % reached at optimal solution
                 [X,nonbasic] = optimalSolution(basic,xb,total);
-                
                 % For Unbounded Region
-                checkUnboundedRegion(x,total);
-                
+                checkUnboundedRegion(x,total);       
                 fprintf("X : ");
                 disp(X);
-                
                 % For infinite solution
                 checkInfiniteSolution(nonbasic,deltaj,x,xb,cb,cj,basic,minratio,X,total);
-                
                 fprintf("z : %d \n",sum(cb.*xb));
                 return;
             end 
