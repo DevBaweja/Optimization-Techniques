@@ -5,8 +5,8 @@
 
 %% Function begin
 % f is coefficient of objective function (row vector)1xn
-% A is coefficient of constraint (matrix)mxn
-% b is right hand side of constraint (column vector)mx1
+% A is coefficient of less than constraint (matrix)mxn
+% b is right hand side of less than constraint (column vector)mx1
 
 % where n is number of variable
 % where m is total number of constraint
