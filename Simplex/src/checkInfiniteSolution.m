@@ -1,4 +1,4 @@
-function checkInfiniteSolution(nonbasic,deltaj,x,xb,cb,cj,basic,minratio,X,size)
+function checkInfiniteSolution(nonbasic,deltaj,x,xb,cb,cj,basic,X,size)
 for j=1:size
 if nonbasic(j) && deltaj(j) == 0
     fprintf("Infinite Solution indicates by x%d \n",j);
@@ -6,7 +6,7 @@ if nonbasic(j) && deltaj(j) == 0
     incoming = j;
         xi = x(:,incoming);
        % Constructing next table for another point
-       minratio = getMinratio(minratio,xb,xi);
+       minratio = getMinratio(xb,xi);
        if isnan(minratio)
            checkInfiniteCase(X,basic,xi,size);
        else

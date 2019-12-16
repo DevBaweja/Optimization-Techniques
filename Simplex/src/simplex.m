@@ -17,16 +17,16 @@ total = m+n;
 format compact
 % checking for dimension
     if checkDimension(f,A,b)
-        [cj,cb,xb,x,deltaj,minratio,basic] = initialValue(f,A,b);
+        [cj,cb,xb,x,basic] = initialValue(f,A,b);
         while true
         % Table
         formTable(x,cb,xb,basic)
         % calculating deltaj
-        deltaj = calculateDeltaj(deltaj,x,cb,cj);
+        deltaj = calculateDeltaj(x,cb,cj);
             if min(deltaj)<0
                  % Optimal Solution is not obtained
                 [incoming,xi] = getIncoming(deltaj,x);
-                minratio = getMinratio(minratio,xb,xi);
+                minratio = getMinratio(xb,xi);
                 fprintf("Minratio \n");
                 disp(minratio);
                if isnan(minratio) 
@@ -45,7 +45,7 @@ format compact
                 fprintf("X : ");
                 disp(X);
                 % For infinite solution
-                checkInfiniteSolution(nonbasic,deltaj,x,xb,cb,cj,basic,minratio,X,total);
+                checkInfiniteSolution(nonbasic,deltaj,x,xb,cb,cj,basic,X,total);
                 fprintf("z : %d \n",sum(cb.*xb));
                 return;
             end 

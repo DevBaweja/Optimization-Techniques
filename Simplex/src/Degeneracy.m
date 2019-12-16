@@ -16,7 +16,7 @@ function outgoing = Degeneracy(x,minratio,incoming,outgoing,size)
        % another column is part of indentity matrix
        for k = 1:length(index)
            if index(:,k) == xbnew
-                minratio = getMinratio(minratio,xbnew,xinew);       
+                minratio = getMinratio(xbnew,xinew);       
                 for p=1:length(pseudo)
                     if pseudo(p)
                         minratio(p) = NaN;
