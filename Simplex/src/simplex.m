@@ -13,6 +13,7 @@
 
 function simplex(f,A,b)
 format compact
+if b>=0 % In Case of Standard Form
 % checking for dimension
     if checkDimension(f,A,b)
         [x,cb,xb,basic,cj] = initialValue(f,A,b);
@@ -51,4 +52,7 @@ format compact
     else
         fprintf("Dimension Mismatch Error \n");
     end
+else
+    fprintf("Simplex Cannot be applied\n");
+end
 end
