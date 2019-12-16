@@ -1,4 +1,5 @@
-function checkInfiniteSolution(nonbasic,deltaj,x,xb,cb,cj,basic,X,size)
+function checkInfiniteSolution(nonbasic,deltaj,x,xb,cb,cj,basic,X)
+size = length(cj);
 for j=1:size
 if nonbasic(j) && deltaj(j) == 0
     fprintf("Infinite Solution indicates by x%d \n",j);
@@ -10,7 +11,7 @@ if nonbasic(j) && deltaj(j) == 0
        if isnan(minratio)
            checkInfiniteCase(X,basic,xi,size);
        else
-           outgoing = getOutgoing(minratio,basic,x,incoming,size);
+           outgoing = getOutgoing(minratio,basic,x,incoming);
            [x,xb,cb,basic] = nextTable(incoming,outgoing,x,xb,cb,cj,basic);
            formTable(x,cb,xb,basic);
            Xnew = optimalSolution(basic,xb,size);

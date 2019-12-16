@@ -1,4 +1,5 @@
-function outgoing = Degeneracy(x,minratio,incoming,outgoing,size)
+function outgoing = Degeneracy(x,minratio,incoming,outgoing)
+   [~,loop] = size(x);
    fprintf("Degeneracy \n");
    index = eye(length(minratio));
    xinew = x(:,incoming);
@@ -9,9 +10,9 @@ function outgoing = Degeneracy(x,minratio,incoming,outgoing,size)
     for p=1:length(d)
         pseudo(d(p)) = false;
     end
-   for j=1:(size-1)
+   for j=1:(loop-1)
        % getting another column
-       inew = mod(inew,size)+1;
+       inew = mod(inew,loop)+1;
        xbnew = x(:,inew);
        % another column is part of indentity matrix
        for k = 1:length(index)

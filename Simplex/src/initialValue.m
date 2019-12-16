@@ -1,4 +1,4 @@
-function [cj,cb,xb,x,basic] =  initialValue(f,A,b)
+function [x,cb,xb,basic,cj] =  initialValue(f,A,b)
 [m,n] = size(A);
 cj = [f,zeros(1,m)]; % row vector
 cb = zeros(1,m)'; % column vector

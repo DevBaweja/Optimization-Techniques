@@ -12,15 +12,13 @@
 % where m is total number of constraint
 
 function simplex(f,A,b)
-[m,n] = size(A);
-total = m+n;
 format compact
 % checking for dimension
     if checkDimension(f,A,b)
-        [cj,cb,xb,x,basic] = initialValue(f,A,b);
+        [x,cb,xb,basic,cj] = initialValue(f,A,b);
         while true
         % Table
-        formTable(x,cb,xb,basic)
+        formTable(x,cb,xb,basic);
         % calculating deltaj
         deltaj = calculateDeltaj(x,cb,cj);
             if min(deltaj)<0
@@ -34,18 +32,18 @@ format compact
                    return;
                else
                    % getting outgoing vector
-                   outgoing = getOutgoing(minratio,basic,x,incoming,total);
+                   outgoing = getOutgoing(minratio,basic,x,incoming);
                    [x,xb,cb,basic] = nextTable(incoming,outgoing,x,xb,cb,cj,basic);
                end
             else
                 % reached at optimal solution
-                [X,nonbasic] = optimalSolution(basic,xb,total);
+                [X,nonbasic] = optimalSolution(basic,xb,sum(size(A)));
                 % For Unbounded Region
-                checkUnboundedRegion(x,total);       
+                checkUnboundedRegion(x);       
                 fprintf("X : ");
                 disp(X);
                 % For infinite solution
-                checkInfiniteSolution(nonbasic,deltaj,x,xb,cb,cj,basic,X,total);
+                checkInfiniteSolution(nonbasic,deltaj,x,xb,cb,cj,basic,X);
                 fprintf("z : %d \n",sum(cb.*xb));
                 return;
             end 
